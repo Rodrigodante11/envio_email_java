@@ -30,7 +30,7 @@ public class EnviaEmail {
         this.textEmail = textEmail;
     }
 
-    public void enviarEmail(){
+    public void enviarEmail(boolean envioHtml){
 
         try {
 
@@ -58,8 +58,14 @@ public class EnviaEmail {
             message.setFrom(new InternetAddress(userName, nomeRemetente)); /*Quem está enviano*/
             message.setRecipients(Message.RecipientType.TO, toUser);/*Email de destino*/
             message.setSubject(assuntoEmail);/*Assunto do e-mail*/
-            message.setText(textEmail);
 
+
+            if (envioHtml){
+                message.setContent(textEmail, "text/html; charset=utf-8");
+
+            }else{
+                message.setText(textEmail);
+            }
 
             Transport.send(message);
 

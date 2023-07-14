@@ -33,6 +33,7 @@ public class main {
         );
 
         enviaEmail.enviarEmail(true);
+        enviaEmail.enviarEmailAnexo(true);
 
 
     }
